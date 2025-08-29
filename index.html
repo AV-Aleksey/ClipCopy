@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clipboard History</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/macos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+</head>
+<body>
+    <!-- Панель заголовка для перетаскивания окна -->
+    <div class="titlebar">
+        <!-- Область для перетаскивания окна -->
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>
+                История буфера обмена
+            </h1>
+            <div class="controls">
+                <button class="btn btn-square" onclick="refreshHistory()" title="Обновить">
+                    <span class="btn-icon">🔄</span>
+                </button>
+                <button class="btn btn-square" onclick="clearHistory()" title="Очистить историю">
+                    <span class="btn-icon">🗑️</span>
+                </button>
+                <div class="help-text">
+                    <small>💡 Правый клик для меню • Cmd+Q для выхода • Двойной клик по заголовку для максимизации</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- Поиск -->
+            <div class="search-container">
+                <input type="text" class="search-input" id="searchInput" placeholder="Поиск в истории..." />
+            </div>
+            
+            <!-- Фильтры -->
+            <div class="filter-tabs">
+                <button class="filter-tab active" data-filter="all">Все</button>
+                <button class="filter-tab" data-filter="today">Сегодня</button>
+                <button class="filter-tab" data-filter="week">Неделя</button>
+                <button class="filter-tab" data-filter="month">Месяц</button>
+            </div>
+            
+            <div class="history-list" id="historyList">
+                <div class="empty-state">
+                    <div class="icon">📋</div>
+                    <h3>История пуста</h3>
+                    <p>Скопируйте текст в любом приложении, и он появится здесь</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification" id="notification">
+        Новый текст добавлен в историю
+    </div>
+    <script src="js/clipboardHistory.js"></script>
+</body>
+</html>

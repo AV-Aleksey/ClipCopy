@@ -1,0 +1,626 @@
+:root {
+    /* macOS/iOS системные цвета */
+    --system-blue: #007AFF;
+    --system-blue-hover: #0056CC;
+    --system-red: #FF3B30;
+    --system-red-hover: #D70015;
+    --system-green: #34C759;
+    
+    /* Нейтральные цвета */
+    --system-gray: #8E8E93;
+    --system-gray2: #AEAEB2;
+    --system-gray3: #C7C7CC;
+    --system-gray4: #D1D1D6;
+    --system-gray5: #E5E5EA;
+    
+    /* Фоновые цвета */
+    --system-background: #FFFFFF;
+    --system-secondary-background: #F2F2F7;
+    --system-tertiary-background: #FFFFFF;
+    --system-grouped-background: #F2F2F7;
+    --system-secondary-grouped-background: #FFFFFF;
+    
+    /* Текстовые цвета */
+    --system-label: #000000;
+    --system-secondary-label: #3C3C43;
+    
+    /* Границы */
+    --system-separator: #C6C6C8;
+    
+    /* Тени */
+    --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.15);
+    --shadow-heavy: 0 8px 24px rgba(0, 0, 0, 0.2);
+    
+    /* Размеры */
+    --border-radius-small: 6px;
+    --border-radius-medium: 8px;
+    --border-radius-large: 12px;
+    --border-radius-xl: 16px;
+    
+    /* Анимации */
+    --transition-fast: 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-medium: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    
+    /* Размеры шрифтов */
+    --font-size-small: 13px;
+    --font-size-regular: 15px;
+    --font-size-xl: 20px;
+    --font-size-xxxl: 28px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: var(--system-grouped-background);
+    height: 100vh;
+    color: var(--system-label);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "kern" 1;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    padding-top: 40px; /* Отступ для области перетаскивания */
+    gap: 16px;
+}
+
+/* Заголовок */
+.header {
+    background: var(--system-secondary-grouped-background);
+    border-radius: var(--border-radius-xl);
+    padding: 20px;
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--system-separator);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.header h1 {
+    color: var(--system-label);
+    font-size: var(--font-size-xxxl);
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    letter-spacing: -0.5px;
+}
+
+.header h1::before {
+    content: "📋";
+    font-size: 28px;
+}
+
+.controls {
+    display: flex;
+    gap: 12px;
+    flex-direction: row;
+    align-items: center;
+}
+
+.help-text {
+    margin-top: 8px;
+    color: var(--system-secondary-label);
+    font-size: var(--font-size-small);
+}
+
+/* Кнопки в стиле macOS */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: var(--border-radius-medium);
+    cursor: pointer;
+    font-size: var(--font-size-regular);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.btn:hover::before {
+    opacity: 1;
+}
+
+
+
+/* Квадратные кнопки */
+.btn-square {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: var(--border-radius-medium);
+    background: var(--system-gray5);
+    color: var(--system-label);
+    border: 1px solid var(--system-separator);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-square:hover {
+    background: var(--system-gray4);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-square:active {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.btn-icon {
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Основной контент */
+.content {
+    flex: 1;
+    background: var(--system-secondary-grouped-background);
+    border-radius: var(--border-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--system-separator);
+    display: flex;
+    flex-direction: column;
+}
+
+.history-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+/* Элементы истории */
+.history-item {
+    background: var(--system-tertiary-background);
+    border: 1px solid var(--system-separator);
+    border-radius: var(--border-radius-large);
+    padding: 16px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.copy-icon {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    font-size: 14px;
+    color: var(--system-gray);
+    opacity: 0.6;
+    transition: opacity var(--transition-fast);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.history-item:hover .copy-icon {
+    opacity: 1;
+}
+
+.history-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 122, 255, 0.05), transparent);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+}
+
+.history-item:hover {
+    background: var(--system-secondary-background);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--system-blue);
+}
+
+.history-item:hover::before {
+    opacity: 1;
+}
+
+.history-item:active {
+    box-shadow: var(--shadow-light);
+}
+
+.history-item.new {
+    animation: slideIn var(--transition-medium);
+    border-left: 3px solid var(--system-green);
+    background: linear-gradient(135deg, rgba(52, 199, 89, 0.05), var(--system-tertiary-background));
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+.item-text {
+    font-size: var(--font-size-regular);
+    line-height: 1.5;
+    color: var(--system-label);
+    word-wrap: break-word;
+    margin-bottom: 12px;
+    font-weight: 400;
+    white-space: pre-wrap;
+}
+
+/* Стили для кода в элементах истории */
+.history-item .code-block {
+    margin: 0 0 12px 0;
+    border-radius: var(--border-radius-small);
+}
+
+.history-item .code-label {
+    font-size: 11px;
+    padding: 6px 10px;
+}
+
+.history-item .code-content {
+    padding: 8px 10px;
+    font-size: 12px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.history-item .code-content pre {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.history-item .code-content code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+    color: inherit;
+    font-family: inherit;
+}
+
+.item-meta {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: var(--font-size-small);
+    color: var(--system-secondary-label);
+}
+
+.item-timestamp {
+    font-style: normal;
+    font-weight: 400;
+}
+
+
+
+/* Пустое состояние */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--system-secondary-label);
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.empty-state .icon {
+    font-size: 64px;
+    margin-bottom: 24px;
+    opacity: 0.6;
+    filter: grayscale(0.3);
+}
+
+.empty-state h3 {
+    margin-bottom: 12px;
+    color: var(--system-label);
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+.empty-state p {
+    font-size: var(--font-size-regular);
+    line-height: 1.5;
+    max-width: 300px;
+    color: var(--system-secondary-label);
+}
+
+/* Скроллбар в стиле macOS */
+.history-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.history-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.history-list::-webkit-scrollbar-thumb {
+    background: var(--system-gray4);
+    border-radius: 4px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+.history-list::-webkit-scrollbar-thumb:hover {
+    background: var(--system-gray3);
+    background-clip: content-box;
+}
+
+.history-list::-webkit-scrollbar-thumb:active {
+    background: var(--system-gray2);
+    background-clip: content-box;
+}
+
+/* Уведомления в стиле macOS */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--system-background);
+    color: var(--system-label);
+    padding: 16px 20px;
+    border-radius: var(--border-radius-large);
+    box-shadow: var(--shadow-heavy);
+    transform: translateX(100%);
+    transition: transform var(--transition-medium);
+    z-index: 1000;
+    border: 1px solid var(--system-separator);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    max-width: 300px;
+    font-size: var(--font-size-regular);
+    font-weight: 500;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: var(--system-green);
+    border-radius: var(--border-radius-small) 0 0 var(--border-radius-small);
+}
+
+/* Адаптивность для темной темы */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --system-background: #000000;
+        --system-secondary-background: #1C1C1E;
+        --system-tertiary-background: #2C2C2E;
+        --system-grouped-background: #000000;
+        --system-secondary-grouped-background: #1C1C1E;
+        
+        --system-label: #FFFFFF;
+        --system-secondary-label: #EBEBF5;
+        
+        --system-separator: #38383A;
+    }
+}
+
+/* Анимации для плавности */
+.history-item {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Дополнительные стили для лучшего UX */
+.history-item:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+}
+
+.btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.3);
+}
+
+
+/* Стили для выделения текста */
+::selection {
+    background: rgba(0, 122, 255, 0.2);
+    color: var(--system-label);
+}
+
+::-moz-selection {
+    background: rgba(0, 122, 255, 0.2);
+    color: var(--system-label);
+}
+
+/* Стили для отображения кода */
+.code-block {
+    position: relative;
+    background: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-radius: var(--border-radius-medium);
+    margin: 8px 0;
+    overflow: hidden;
+}
+
+.code-label {
+    background: #f1f3f4;
+    color: #586069;
+    font-size: var(--font-size-small);
+    font-weight: 500;
+    padding: 8px 12px;
+    border-bottom: 1px solid #e1e4e8;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.code-label::before {
+    content: "💻";
+    font-size: 12px;
+}
+
+/* Иконки для разных языков программирования */
+.code-label[data-language="JavaScript"]::before {
+    content: "🟨";
+}
+
+.code-label[data-language="HTML"]::before {
+    content: "🟧";
+}
+
+.code-label[data-language="CSS"]::before {
+    content: "🔵";
+}
+
+.code-label[data-language="Python"]::before {
+    content: "🐍";
+}
+
+.code-label[data-language="Java"]::before {
+    content: "☕";
+}
+
+.code-label[data-language="C++"]::before {
+    content: "🔷";
+}
+
+.code-label[data-language="PHP"]::before {
+    content: "🐘";
+}
+
+.code-label[data-language="Ruby"]::before {
+    content: "💎";
+}
+
+.code-label[data-language="Go"]::before {
+    content: "🐹";
+}
+
+.code-label[data-language="Rust"]::before {
+    content: "🦀";
+}
+
+.code-content {
+    padding: 12px;
+    overflow-x: auto;
+    font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    white-space: pre;
+    color: #24292e;
+}
+
+.code-content pre {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+.code-content code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    font-size: inherit;
+    color: inherit;
+}
+
+/* Темная тема для кода */
+@media (prefers-color-scheme: dark) {
+    .code-block {
+        background: #0d1117;
+        border-color: #30363d;
+    }
+    
+    .code-label {
+        background: #161b22;
+        color: #8b949e;
+        border-bottom-color: #30363d;
+    }
+    
+    .code-content {
+        color: #c9d1d9;
+    }
+}
+
+/* Скроллбар для кода */
+.code-content::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+.code-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.code-content::-webkit-scrollbar-thumb {
+    background: var(--system-gray4);
+    border-radius: 3px;
+}
+
+.code-content::-webkit-scrollbar-thumb:hover {
+    background: var(--system-gray3);
+}
+
+/* Скроллбар для кода в элементах истории */
+.history-item .code-content::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+.history-item .code-content::-webkit-scrollbar-thumb {
+    background: var(--system-gray3);
+    border-radius: 2px;
+}
+
+.history-item .code-content::-webkit-scrollbar-thumb:hover {
+    background: var(--system-gray2);
+}
