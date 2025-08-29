@@ -508,47 +508,6 @@ body {
     font-size: 12px;
 }
 
-/* Иконки для разных языков программирования */
-.code-label[data-language="JavaScript"]::before {
-    content: "🟨";
-}
-
-.code-label[data-language="HTML"]::before {
-    content: "🟧";
-}
-
-.code-label[data-language="CSS"]::before {
-    content: "🔵";
-}
-
-.code-label[data-language="Python"]::before {
-    content: "🐍";
-}
-
-.code-label[data-language="Java"]::before {
-    content: "☕";
-}
-
-.code-label[data-language="C++"]::before {
-    content: "🔷";
-}
-
-.code-label[data-language="PHP"]::before {
-    content: "🐘";
-}
-
-.code-label[data-language="Ruby"]::before {
-    content: "💎";
-}
-
-.code-label[data-language="Go"]::before {
-    content: "🐹";
-}
-
-.code-label[data-language="Rust"]::before {
-    content: "🦀";
-}
-
 .code-content {
     padding: 12px;
     overflow-x: auto;
